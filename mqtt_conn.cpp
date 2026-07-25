@@ -1,13 +1,14 @@
 #include "mqtt_conn.h"
 
 const char* MQTT_SERVER = "mosquitto.local";
-const int MQTT_PORT = 1883;
+const int MQTT_PORT = 8883;
 const char* MQTT_CLIENT_ID = "greenhouse-m5";
 
-WiFiClient espClientM5;
+WiFiClientSecure espClientM5;
 PubSubClient MqttClient(espClientM5);
 
 bool connectMqtt() {
+  espClientM5.setCACert(ca_cert); 
   MqttClient.setServer(MQTT_SERVER, MQTT_PORT);
   MqttClient.setCallback(mqttCallback);
 

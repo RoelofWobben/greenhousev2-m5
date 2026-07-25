@@ -3,8 +3,10 @@
 #include "WiFi.h"
 #include <PubSubClient.h>
 #include "secrets.h"
+#include "ca_cert.h"
+#include "WiFiClientSecure.h"
 
-extern WiFiClient espClientM5;
+extern WiFiClientSecure espClientM5;
 extern PubSubClient MqttClient;
 
 bool connectMqtt();
